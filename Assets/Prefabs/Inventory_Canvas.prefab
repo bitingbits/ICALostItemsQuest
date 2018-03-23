@@ -118,7 +118,7 @@ MonoBehaviour:
   mug_image: {fileID: 114643430192116930}
   empty: {fileID: 21300000, guid: a26660689acb3f4408b4a931f8266986, type: 3}
   guitar: {fileID: 21300000, guid: e5765bea5b0d56843896f58d6dc79e6b, type: 3}
-  mug: {fileID: 21300000, guid: 3542d04f0cfba48419f3611318178c2b, type: 3}
+  mug: {fileID: 21300000, guid: 79f7aec1c8b1e6643989eda2464ace7b, type: 3}
 --- !u!114 &114643430192116930
 MonoBehaviour:
   m_ObjectHideFlags: 1
