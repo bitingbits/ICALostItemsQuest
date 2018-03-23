@@ -43,9 +43,9 @@ public class enemyStateMachine : enemyController {
 
     private void UpdateChaseState()
     {
-        //transform.LookAt(player.transform);
+        //  transform.LookAt(player.transform);
         //transform.Translate(0, 0, movementSpeed * Time.deltaTime);
-        UpdateTarget(destPos);
+        UpdateTarget(player.transform.position);
         if (!playerInRange())
         {
             curState = FSMState.Patrol;
@@ -60,13 +60,12 @@ public class enemyStateMachine : enemyController {
             FindNextPoint();
         }
 
-        //tempmovement
-        UpdateTarget(destPos);
-        //transform.LookAt(destPos);
-       // transform.Translate(0,0, Time.deltaTime * movementSpeed);
+        //tempmovement UpdateTarget(destPos);
+        UpdateTarget(destPos); 
 
         if (playerInRange())
         {
+            print("Player detected");
             curState = FSMState.Chase;
         }
     }
@@ -81,8 +80,8 @@ public class enemyStateMachine : enemyController {
         z = Random.Range(this.transform.position.z - 400, this.transform.position.z + 400);
         destPos = new Vector3(x, y, z);
 
-        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        cube.transform.position = destPos;
+   //     GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+     //   cube.transform.position = destPos;
     }
 
     protected bool IsInCurrentRange(Vector3 pos)
@@ -99,23 +98,24 @@ public class enemyStateMachine : enemyController {
 
     private bool playerInRange()
     {
-        if (GameObject.Find("Player") != null)
-            return false;
-        else
+        if (player != null)
         {
-            if (Vector3.Distance(transform.position, player.transform.position) < detectionRange)
-            {
-                print("Player in range");
-                return true;
-            }
+            print("player is dead");
             return false;
         }
+        if (Vector3.Distance(transform.position, player.transform.position) < detectionRange)
+        {
+            print("Player in range");
+            return true;
+        }
+        return false;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject == player)
         {
+            print("Killed the player");
             GameOver(player);
         }
     }
@@ -123,7 +123,6 @@ public class enemyStateMachine : enemyController {
     public void GameOver(GameObject player)
     {
         Destroy(player);
-        //sendMessage?
     }
 
     void UpdateTarget(Vector3 targetPosition)

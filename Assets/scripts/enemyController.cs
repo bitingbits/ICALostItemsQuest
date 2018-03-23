@@ -26,7 +26,7 @@ public class enemyController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        player = GameObject.FindWithTag("Player");
+     //   player = GameObject.Find("Player");
         navAgents = FindObjectsOfType(typeof(NavMeshAgent)) as NavMeshAgent[];
         foreach (NavMeshAgent agent in navAgents)
         {
