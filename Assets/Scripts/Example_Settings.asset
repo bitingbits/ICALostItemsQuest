@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabd2dd808f93ec4db1978cbf3b59ed7, type: 3}
   m_Name: Example_Settings
   m_EditorClassIdentifier: 
-  has_mug: 0
-  has_guitar: 0
+  has_mug: 1
+  has_guitar: 1

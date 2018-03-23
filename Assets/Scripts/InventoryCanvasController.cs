@@ -26,11 +26,11 @@ public class InventoryCanvasController : MonoBehaviour {
         {
             guitar_image.sprite = guitar; 
         }
-        else if (settings.has_mug == true)
+        if (settings.has_mug == true)
         {
             mug_image.sprite = mug;
         }
-        else
+        if (settings.has_guitar == false && settings.has_mug)
         {
             guitar_image.sprite = empty;
             mug_image.sprite = empty;

@@ -12,5 +12,6 @@ public class GameSettings: ScriptableObject
 
     [SerializeField]
     public bool has_guitar = false;
+
 }
 
