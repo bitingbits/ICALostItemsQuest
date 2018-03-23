@@ -11,7 +11,7 @@ public class enemyController : MonoBehaviour {
     public int movementSpeed;
 
 
-    public NavMeshAgent[] navAgents;
+    public NavMeshAgent navAgent;
     protected GameObject[] pointList;
 
     public GameObject player;
@@ -26,24 +26,15 @@ public class enemyController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-     //   player = GameObject.Find("Player");
-        navAgents = FindObjectsOfType(typeof(NavMeshAgent)) as NavMeshAgent[];
-        foreach (NavMeshAgent agent in navAgents)
-        {
-            agent.speed = movementSpeed;
-        }
+        player = GameObject.Find("Player");
+        navAgent = GetComponent<NavMeshAgent>();
+        navAgent.speed = movementSpeed;
+        
         FSMStart();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         FSMUpdate();
-        if(isGrounded())
-            this.GetComponent<Rigidbody>().AddForce(new Vector3(0,25,0));
-    }
-
-    bool isGrounded()
-    {
-        return Physics.Raycast(transform.position, -Vector3.up, 2);
     }
 }

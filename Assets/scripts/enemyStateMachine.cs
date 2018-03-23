@@ -43,6 +43,7 @@ public class enemyStateMachine : enemyController {
 
     private void UpdateChaseState()
     {
+        print("Starting the chase");
         //  transform.LookAt(player.transform);
         //transform.Translate(0, 0, movementSpeed * Time.deltaTime);
         UpdateTarget(player.transform.position);
@@ -61,13 +62,13 @@ public class enemyStateMachine : enemyController {
         }
 
         //tempmovement UpdateTarget(destPos);
-        UpdateTarget(destPos); 
-
-        if (playerInRange())
-        {
-            print("Player detected");
-            curState = FSMState.Chase;
-        }
+        UpdateTarget(destPos);
+        if (player != null)
+            if (playerInRange())
+            {
+                print("Player detected");
+                curState = FSMState.Chase;
+            }
     }
     
     protected void FindNextPoint()
@@ -95,14 +96,11 @@ public class enemyStateMachine : enemyController {
         return false;
     }
 
-
     private bool playerInRange()
     {
-        if (player != null)
-        {
-            print("player is dead");
+        if (player ==null)
             return false;
-        }
+        
         if (Vector3.Distance(transform.position, player.transform.position) < detectionRange)
         {
             print("Player in range");
@@ -127,9 +125,6 @@ public class enemyStateMachine : enemyController {
 
     void UpdateTarget(Vector3 targetPosition)
     {
-        foreach (NavMeshAgent agent in navAgents)
-        {
-            agent.destination = targetPosition;
-        }
+            navAgent.SetDestination(targetPosition);
     }
 }
