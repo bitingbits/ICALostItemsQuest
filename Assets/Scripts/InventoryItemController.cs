@@ -16,6 +16,9 @@ public class InventoryItemController : MonoBehaviour {
             settings = ScriptableObject.CreateInstance<GameSettings>();
         }
 
+        settings.has_guitar = false;
+        settings.has_mug = false;
+
 	}
 	
 	// Update is called once per frame
@@ -24,15 +27,21 @@ public class InventoryItemController : MonoBehaviour {
         Debug.Log("pick up");
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (Vector3.Distance(player.transform.position, guitar.transform.position) < 1f)
+            if (guitar != null)
             {
-                settings.has_guitar = true;
-                Destroy(guitar);
+                if (Vector3.Distance(player.transform.position, guitar.transform.position) < 1f)
+                {
+                    settings.has_guitar = true;
+                    Destroy(guitar);
+                }
             }
-            else if (Vector3.Distance(player.transform.position, mug.transform.position) <=1f)
+            if (mug != null)
             {
-                settings.has_mug = true;
-                Destroy(mug);
+                if (Vector3.Distance(player.transform.position, mug.transform.position) <=1f)
+                {
+                    settings.has_mug = true;
+                    Destroy(mug);
+                }
             }
         }
         
