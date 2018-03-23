@@ -29,7 +29,7 @@ public class InventoryItemController : MonoBehaviour {
         {
             if (guitar != null)
             {
-                if (Vector3.Distance(player.transform.position, guitar.transform.position) < 1f)
+                if (Vector3.Distance(player.transform.position, guitar.transform.position) < 1.5f)
                 {
                     settings.has_guitar = true;
                     Destroy(guitar);
@@ -40,7 +40,7 @@ public class InventoryItemController : MonoBehaviour {
             }
             if (mug != null)
             {
-                if (Vector3.Distance(player.transform.position, mug.transform.position) <=1f)
+                if (Vector3.Distance(player.transform.position, mug.transform.position) <= 1.5f)
                 {
                     settings.has_mug = true;
                     Destroy(mug);
