@@ -5,20 +5,21 @@ using UnityEngine;
 public class InventoryItemController : MonoBehaviour {
 
     public GameSettings settings;
+	public SoundController sc;
+	public DialogController dc;
+
     public GameObject player;
+
+	public AudioClip guitarAudioClip;
     public GameObject guitar;
+
+	public AudioClip mugAudioClip;
     public GameObject mug;
 
 	// Use this for initialization
 	void Start () {
-		if (settings == null)
-        {
-            settings = ScriptableObject.CreateInstance<GameSettings>();
-        }
-
         settings.has_guitar = false;
         settings.has_mug = false;
-
 	}
 	
 	// Update is called once per frame
@@ -32,6 +33,9 @@ public class InventoryItemController : MonoBehaviour {
                 {
                     settings.has_guitar = true;
                     Destroy(guitar);
+
+					dc.ShowDialog (new string[] {"You found Niels' guitar!"});
+					sc.PlaySound (guitarAudioClip);
                 }
             }
             if (mug != null)
@@ -40,6 +44,9 @@ public class InventoryItemController : MonoBehaviour {
                 {
                     settings.has_mug = true;
                     Destroy(mug);
+
+					dc.ShowDialog (new string[] {"You found Jeff's mug!"});
+					sc.PlaySound (mugAudioClip);
                 }
             }
         }

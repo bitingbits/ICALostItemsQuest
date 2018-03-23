@@ -50,7 +50,7 @@ public class DialogController : MonoBehaviour {
 		SkipDialog ();
 	}
 
-	void ShowDialog(string [] dialogToDisplay){
+	public void ShowDialog(string [] dialogToDisplay){
 		dialogContent = dialogToDisplay;
 		stringIndex = 0;
 		characterIndex = 0;
