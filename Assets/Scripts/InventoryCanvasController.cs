@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class InventoryCanvasController : MonoBehaviour {
 
     public GameSettings settings;
@@ -11,17 +12,23 @@ public class InventoryCanvasController : MonoBehaviour {
     public Sprite empty;
     public Sprite guitar;
     public Sprite mug;
+
 	// Use this for initialization
 	void Start () {
-		if (settings == null)
-        {
-            settings = ScriptableObject.CreateInstance<GameSettings>();
-        }
+		guitar_image.sprite = empty;
+		mug_image.sprite = empty;
+
+		guitar_image.enabled = false;
+		mug_image.enabled = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (settings.cutscene_done) {
+			guitar_image.enabled = true;
+			mug_image.enabled = true;
+		}
+
         if (settings.has_guitar == true)
         {
             guitar_image.sprite = guitar; 
@@ -30,11 +37,5 @@ public class InventoryCanvasController : MonoBehaviour {
         {
             mug_image.sprite = mug;
         }
-        if (settings.has_guitar == false && settings.has_mug)
-        {
-            guitar_image.sprite = empty;
-            mug_image.sprite = empty;
-        }
-
 	}
 }

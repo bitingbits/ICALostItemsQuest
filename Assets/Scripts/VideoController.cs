@@ -4,17 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
-
-/// <summary>
-/// Unity VideoPlayer Script for Unity 5.6 (currently in beta 0b11 as of March 15, 2017)
-/// Blog URL: http://justcode.me/unity2d/how-to-play-videos-on-unity-using-new-videoplayer/
-/// YouTube Video Link: https://www.youtube.com/watch?v=nGA3jMBDjHk
-/// StackOverflow Disscussion: http://stackoverflow.com/questions/41144054/using-new-unity-videoplayer-and-videoclip-api-to-play-video/
-/// Code Contiburation: StackOverflow - Programmer
-/// </summary>
-
-
 public class VideoController : MonoBehaviour {
+
+	public GameSettings settings;
 
 	public RawImage image;
 
@@ -28,11 +20,25 @@ public class VideoController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		settings.cutscene_done = false;
 		Application.runInBackground = true;
 		StartCoroutine(playVideo());
 	}
 
-	IEnumerator playVideo()
+	void Update(){
+		SkipVideo();
+	}
+
+	private void SkipVideo(){
+		if (Input.GetKeyDown ("e")) {
+			videoPlayer.Stop ();
+			audioSource.Stop ();
+			Destroy (image);
+			settings.cutscene_done = true;
+		}
+	}
+
+	private IEnumerator playVideo()
 	{
 
 		//Add VideoPlayer to the GameObject
@@ -46,14 +52,7 @@ public class VideoController : MonoBehaviour {
 		audioSource.playOnAwake = false;
 		audioSource.Pause();
 
-		//We want to play from video clip not from url
-
 		videoPlayer.source = VideoSource.VideoClip;
-
-		// Vide clip from Url
-		//videoPlayer.source = VideoSource.Url;
-		//videoPlayer.url = "http://www.quirksmode.org/html5/videos/big_buck_bunny.mp4";
-
 
 		//Set Audio Output to AudioSource
 		audioSource.clip = videoAudio;
@@ -93,7 +92,9 @@ public class VideoController : MonoBehaviour {
 
 		Debug.Log("Done Playing Video");
 		Destroy (image);
-		//TODO: SET MAIN BOOLEAN 'cutscene_played = true'
+
+		// allow everything else to start
+		settings.cutscene_done = true;
 	}
 
 

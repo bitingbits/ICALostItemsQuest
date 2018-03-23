@@ -6,6 +6,8 @@ using UnityEngine;
 [CreateAssetMenu]
 public class GameSettings: ScriptableObject
 {
+	[SerializeField]
+	public bool cutscene_done = false;
 
     [SerializeField]
     public bool has_mug = false;

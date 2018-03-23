@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class DialogController : MonoBehaviour {
 
+	public GameSettings settings;
+
 	public Text gameDialog;
 	public string [] dialogContent;
 
@@ -18,7 +20,8 @@ public class DialogController : MonoBehaviour {
 	void Start()
 	{
 		// STARTING INIT DIALOGUE
-		StartCoroutine (DisplayAnimatedText());
+		if(settings.cutscene_done)
+			StartCoroutine (DisplayAnimatedText());
 	}
 		
 	IEnumerator DisplayAnimatedText()

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SoundController : MonoBehaviour {
 
+	public GameSettings settings;
 	private AudioSource audioSource;
 
 	// Use this for initialization
