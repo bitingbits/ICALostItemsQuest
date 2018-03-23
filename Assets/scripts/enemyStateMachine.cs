@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class enemyStateMachine : enemyController {
 
+
+
     public enum FSMState
     {
         None,
@@ -118,9 +120,13 @@ public class enemyStateMachine : enemyController {
         }
     }
 
+
+	public DialogController dc;
+
     public void GameOver(GameObject player)
     {
-        Destroy(player);
+		dc.ShowDialog (new string[] { "You lose!" });
+		//Destroy(player);
     }
 
     void UpdateTarget(Vector3 targetPosition)
