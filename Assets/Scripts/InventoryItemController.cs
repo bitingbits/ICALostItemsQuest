@@ -24,7 +24,6 @@ public class InventoryItemController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Debug.Log("pick up");
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (guitar != null)
