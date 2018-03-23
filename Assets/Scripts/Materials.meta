@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefabs.meta
+guid: ad019bc9c6c464d43bdfe0ae94eb55fb
+folderAsset: yes
+timeCreated: 1521809461
+=======
+guid: 24f9515d7920e2048b3f46dba8642bab
+folderAsset: yes
+timeCreated: 1521812994
+>>>>>>> feature_ai:Assets/Scripts/Materials.meta
+licenseType: Free
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
